@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IGameState } from '../store/types';
-import { RootState } from '../reducers/rootReducer';
+import { IGameState } from '../../store/types';
+import { RootState } from '../../reducers/rootReducer';
 
 export interface IVoteSelectorProps {
     currentVote : number | undefined;

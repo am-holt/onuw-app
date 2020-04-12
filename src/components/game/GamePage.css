@@ -1,0 +1,38 @@
+.gamePage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.otherPlayers {
+    display: flex; 
+    justify-content: space-evenly;
+  }
+  
+.neutralCards{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+.currentPlayer{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+.playerDisplay{
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.roleCard {
+  background-color: brown;
+  min-width: 5em;
+  min-height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
