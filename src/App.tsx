@@ -9,9 +9,7 @@ function App(){
   const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <GamePage/>
-      </header>
+      <GamePage/>
     </div>
   );
 }
