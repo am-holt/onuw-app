@@ -5,7 +5,7 @@ import { IGameState } from '../../store/types';
 import { RootState } from '../../reducers/rootReducer';
 
 export interface IVoteSelectorProps {
-    currentVote : number | undefined;
+    currentVote : string | undefined;
 }
 
 class VoteSelector extends Component<IVoteSelectorProps> {

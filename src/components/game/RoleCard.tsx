@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../reducers/rootReducer';
-import { Role, IPlayer } from '../../store/types';
+import { Role } from 'onuw-server-api';
 
 export interface IRoleCardProps {
-    isVisible: boolean;
     role: Role;
 }
 
@@ -22,7 +21,7 @@ export default class RoleCard extends Component<IRoleCardProps> {
   }
   
   renderRole() {
-    if (this.props.isVisible && this.props.role !== "Unknown") {
+    if (this.props.role !== Role.HIDDEN) {
       return( <p>{this.props.role}</p>)   
     } else {
       return( <p>?</p>)   

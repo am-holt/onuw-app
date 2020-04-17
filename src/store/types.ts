@@ -6,6 +6,7 @@ export interface IGameState {
     gamePhase: GamePhase;
     timeLeft: number;
     currentVote: number;
+    gameId: number | undefined;
 }
 
 export interface IPlayer {
@@ -25,4 +26,4 @@ export type GamePhase = "Day" | NightGamePhase | "Vote"
 
 export type NightGamePhase = "Werewolf"
 
-export type IPlayerId = number;
+export type IPlayerId = string;

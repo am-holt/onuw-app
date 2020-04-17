@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import {gameReducer} from './gameReducer';
-import { IGameState } from '../store/types';
+import { IGame } from 'onuw-server-api';
 
 const rootReducer = combineReducers({
   game: gameReducer
@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export type RootState = {game : IGameState}
+export type RootState = {game : IGame}

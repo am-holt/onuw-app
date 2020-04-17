@@ -15,7 +15,8 @@
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "typescript": "^3.7.5"
+    "conjure-client": "^1.2.0",
+    "onuw-server-api": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +40,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.7"
+    "@types/react-redux": "^7.1.7",
+    "ts-loader": "^7.0.0",
+    "typescript": "^3.8.3"
   }
 }
