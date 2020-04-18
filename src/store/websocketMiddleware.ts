@@ -67,6 +67,12 @@ const socketMiddleware = () => {
           socket.send(JSON.stringify(startGame));
         }
         break;
+      case 'EDIT_NAME' :
+        console.log('edit');
+        if (socket !== null) {
+          const editName = IClientEvent.updateName(action.name);
+          socket.send(JSON.stringify(editName));
+        }
       default:
         console.log('the next action:', action);
         return next(action);

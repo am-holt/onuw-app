@@ -9,6 +9,14 @@
   color: white;
 }
 
+.cardView {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .otherPlayers {
     display: flex; 
     justify-content: space-evenly;

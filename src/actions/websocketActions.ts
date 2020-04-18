@@ -4,3 +4,4 @@ export const wsDisconnect = (host: any) => ({ type: 'WS_DISCONNECT', host });
 export const wsDisconnected = () => ({ type: 'WS_DISCONNECTED' });
 
 export const startGame = () => ({ type: 'START_GAME' });
+export const editName = (name: string) => ({ type: 'EDIT_NAME', name });

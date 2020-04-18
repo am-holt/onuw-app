@@ -6,7 +6,6 @@ import { votePlayer } from './actions/actionTypes';
 import VoteSelector from './components/game/VoteSelector';
 
 function App(){
-  const dispatch = useDispatch();
   return (
     <div className="App">
       <GamePage/>

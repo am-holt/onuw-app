@@ -9,6 +9,7 @@ import './GamePage.css'
 import RoleCard from './RoleCard';
 import { wsConnect, startGame } from '../../actions/websocketActions';
 import { IGame, Phase } from 'onuw-server-api';
+import Lobby from './Lobby';
 
 interface IGamePageProps {
     gameState: IGame;
@@ -34,9 +35,18 @@ class GamePage extends Component<IGamePageProps> {
     }
 
   render(){
-    const areCardsVisible = this.props.gameState.currentPhase === Phase.DAY;
+      const inLobby = this.props.gameState.currentPhase === Phase.LOBBY;
     return (
         <div className="gamePage">
+            {inLobby && <Lobby/>}
+            {!inLobby && this.renderCardView()}
+        </div>
+    )
+  }
+
+  renderCardView() {
+      return(
+        <div className="cardView">
             <div className="otherPlayers">
                 {this.props.gameState.otherPlayers.map(element => <PlayerDisplay player={element}/>)}
             </div>
@@ -52,7 +62,7 @@ class GamePage extends Component<IGamePageProps> {
                 {this.props.gameState.timeLeft}
             </div>
         </div>
-    )
+      )
   }
 }
 
