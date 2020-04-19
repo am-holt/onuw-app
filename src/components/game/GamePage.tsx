@@ -56,10 +56,12 @@ class GamePage extends Component<IGamePageProps> {
             <div className="currentPlayer">
                 <PlayerDisplay player={this.props.gameState.currentPlayer}/>
             </div>
-            <div className="vote">
-                <VoteSelector/>
-                {this.props.gameState.currentPhase === Phase.LOBBY && <button onClick={() => this.props.startGame()}> Start</button>}
-                {this.props.gameState.timeLeft}
+            <div className="status">
+                <h1>
+                Current Phase: {this.props.gameState.currentPhase}
+                </h1>
+                {this.props.gameState.currentPhase === Phase.VOTE && <VoteSelector/>}
+                Time left: {this.props.gameState.timeLeft}
             </div>
         </div>
       )
