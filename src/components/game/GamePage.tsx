@@ -49,10 +49,10 @@ class GamePage extends Component<IGamePageProps> {
       return(
         <div className="cardView">
             <div className="otherPlayers">
-                {this.props.gameState.otherPlayers.map(element => <PlayerDisplay player={element} onClick={() => this.props.selectPlayer(element)}/>)}
+                {this.props.gameState.otherPlayers.sort((a,b)=> a.id > b.id ? 1 : (a.id ==b.id?0 :-1)).map(element => <PlayerDisplay player={element} onClick={() => this.props.selectPlayer(element)}/>)}
             </div>
             <div className="neutralCards">
-                {this.props.gameState.neutralCards.map(element => <RoleCard role={element.role} onClick={()=> this.props.selectPlayer(element)}/>)}
+                {this.props.gameState.neutralCards.sort().map(element => <RoleCard role={element.role} onClick={()=> this.props.selectPlayer(element)}/>)}
             </div>
             <div className="currentPlayer">
                 <PlayerDisplay player={this.props.gameState.currentPlayer} onClick={() => this.props.selectPlayer(this.props.gameState.currentPlayer)}/>
