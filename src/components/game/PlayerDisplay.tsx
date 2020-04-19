@@ -7,6 +7,7 @@ import { IPlayer } from 'onuw-server-api';
 
 export interface IPlayerDisplayProps {
     player: IPlayer;
+    onClick: () => void;
 }
 
 export default class PlayerDisplay extends Component<IPlayerDisplayProps> {
@@ -17,7 +18,7 @@ export default class PlayerDisplay extends Component<IPlayerDisplayProps> {
     return (
         <div className="playerDisplay">
           <p>{this.props.player.name}</p>
-          <RoleCard role={this.props.player.role}/>
+          <RoleCard role={this.props.player.role} onClick={this.props.onClick}/>
         </div>
     )
   }

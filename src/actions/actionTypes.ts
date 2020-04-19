@@ -6,7 +6,7 @@ export const FETCHED_GAME = "UPDATE_GAME_STATE"
 export const VOTE_PLAYER = "VOTE_PLAYER"
 export const FETCHED_GAME_TIME = "FETCHED_GAME_TIME"
 export const FETCHED_PLAYER = "FETCHED_PLAYER"
-
+export const SELECT_PLAYER = "SELECT_PLAYER"
 
 interface FetchGameAction {
     type: typeof FETCH_GAME;
@@ -33,7 +33,17 @@ interface FetchedPlayer {
     player: IPlayer;
 }
 
-export type GameActionTypes = VotePlayerAction | FetchGameAction | FetchedGameAction | FetchedGameTime | FetchedPlayer;
+interface SelectPlayer {
+    type: typeof SELECT_PLAYER;
+    playerId: String;
+}
+
+export type GameActionTypes = VotePlayerAction
+    | FetchGameAction  
+    | FetchedGameAction 
+    | FetchedGameTime 
+    | FetchedPlayer 
+    | SelectPlayer;
 
 export function getGame(gameId : string) : FetchGameAction {
     return {type: FETCH_GAME, gameId: gameId};
@@ -53,4 +63,8 @@ export function receivedGameTime(gameTime: number) {
 
 export function receivedPlayer(player: IPlayer) {
     return {type: FETCHED_PLAYER, player: player};
+}
+
+export function selectPlayer(player: IPlayer) {
+    return {type: SELECT_PLAYER, playerId: player.id};
 }

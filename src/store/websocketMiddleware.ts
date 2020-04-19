@@ -1,5 +1,5 @@
 import { Dispatch, MiddlewareAPI } from 'redux';
-import { receivedGameState, FETCHED_GAME_TIME, receivedGameTime, receivedPlayer } from '../actions/actionTypes';
+import { receivedGameState, FETCHED_GAME_TIME, receivedGameTime, receivedPlayer, SELECT_PLAYER } from '../actions/actionTypes';
 import * as actions from '../actions/websocketActions';
 import {IServerEvent, IClientEvent, IPlayer, Phase, IGame, IServerEventVisitor, IClientEvent_StartGame, Void} from 'onuw-server-api';
 
@@ -72,6 +72,11 @@ const socketMiddleware = () => {
         if (socket !== null) {
           const editName = IClientEvent.updateName(action.name);
           socket.send(JSON.stringify(editName));
+        }
+      case SELECT_PLAYER :
+        if (socket !== null) {
+          const select = IClientEvent.clickPlayer(action.playerId);
+          socket.send(JSON.stringify(select));
         }
       default:
         console.log('the next action:', action);

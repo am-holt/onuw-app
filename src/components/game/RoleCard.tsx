@@ -6,6 +6,7 @@ import { Role } from 'onuw-server-api';
 
 export interface IRoleCardProps {
     role: Role;
+    onClick: () => void;
 }
 
 export default class RoleCard extends Component<IRoleCardProps> {
@@ -14,7 +15,7 @@ export default class RoleCard extends Component<IRoleCardProps> {
   }
   render(){
     return (
-        <div className="roleCard">
+        <div className="roleCard" onClick={this.props.onClick}>
           {this.renderRole()}
         </div>
     )

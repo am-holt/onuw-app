@@ -25,9 +25,12 @@ export function gameReducer(state: IGame, action: GameActionTypes): IGame {
       const updatedPlayer = action.player;
       if (state.currentPlayer.id === updatedPlayer.id) {
         return {...state, currentPlayer: updatedPlayer};    
-      } else {
+      } else if (state.otherPlayers.some(player => player.id === updatedPlayer.id)) {
         const otherPlayers = state.otherPlayers.filter(x => x.id !== updatedPlayer.id).concat(updatedPlayer)
         return {...state, otherPlayers};    
+      } else if (state.neutralCards.some(player => player.id === updatedPlayer.id)) {
+        const neutralCards = state.neutralCards.filter(x => x.id !== updatedPlayer.id).concat(updatedPlayer)
+        return {...state, neutralCards};    
       }
       
     default:

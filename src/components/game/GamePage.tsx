@@ -1,20 +1,21 @@
 
 import React, { Component, Dispatch } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { IGameState } from '../../store/types';
+import { selectPlayer} from '../../actions/actionTypes'
 import { RootState } from '../../reducers/rootReducer';
 import PlayerDisplay from './PlayerDisplay';
 import VoteSelector from './VoteSelector';
 import './GamePage.css'
 import RoleCard from './RoleCard';
 import { wsConnect, startGame } from '../../actions/websocketActions';
-import { IGame, Phase } from 'onuw-server-api';
+import { IGame, Phase, IPlayer } from 'onuw-server-api';
 import Lobby from './Lobby';
 
 interface IGamePageProps {
     gameState: IGame;
     wsConnect: (host: any) => void;
     startGame: () => void;
+    selectPlayer: (player:IPlayer) => void;
 }
 
 class GamePage extends Component<IGamePageProps> {
@@ -48,13 +49,13 @@ class GamePage extends Component<IGamePageProps> {
       return(
         <div className="cardView">
             <div className="otherPlayers">
-                {this.props.gameState.otherPlayers.map(element => <PlayerDisplay player={element}/>)}
+                {this.props.gameState.otherPlayers.map(element => <PlayerDisplay player={element} onClick={() => this.props.selectPlayer(element)}/>)}
             </div>
             <div className="neutralCards">
-                {this.props.gameState.neutralCards.map(element => <RoleCard role={element.role}/>)}
+                {this.props.gameState.neutralCards.map(element => <RoleCard role={element.role} onClick={()=> this.props.selectPlayer(element)}/>)}
             </div>
             <div className="currentPlayer">
-                <PlayerDisplay player={this.props.gameState.currentPlayer}/>
+                <PlayerDisplay player={this.props.gameState.currentPlayer} onClick={() => this.props.selectPlayer(this.props.gameState.currentPlayer)}/>
             </div>
             <div className="status">
                 <h1>
@@ -74,7 +75,8 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = {
     wsConnect,
-    startGame
+    startGame,
+    selectPlayer,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
