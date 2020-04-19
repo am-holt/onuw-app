@@ -4,6 +4,7 @@ import { IGame } from "onuw-server-api";
 export const FETCH_GAME = "FETCH_GAME"
 export const FETCHED_GAME = "UPDATE_GAME_STATE"
 export const VOTE_PLAYER = "VOTE_PLAYER"
+export const FETCHED_GAME_TIME = "FETCHED_GAME_TIME"
 
 interface FetchGameAction {
     type: typeof FETCH_GAME;
@@ -20,7 +21,12 @@ interface VotePlayerAction {
     playerId: string;
 }
 
-export type GameActionTypes = VotePlayerAction | FetchGameAction | FetchedGameAction;
+interface FetchedGameTime {
+    type: typeof FETCHED_GAME_TIME;
+    time: number;
+}
+
+export type GameActionTypes = VotePlayerAction | FetchGameAction | FetchedGameAction | FetchedGameTime;
 
 export function getGame(gameId : string) : FetchGameAction {
     return {type: FETCH_GAME, gameId: gameId};
@@ -34,3 +40,6 @@ export function votePlayer(playerId : string) {
     return {type: VOTE_PLAYER, playerId: playerId};
 }
 
+export function receivedGameTime(gameTime: number) {
+    return {type: FETCHED_GAME_TIME, time: gameTime};
+}
