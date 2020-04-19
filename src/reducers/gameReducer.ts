@@ -1,5 +1,5 @@
 import {initialGame} from './initialState';
-import {FETCH_GAME, VOTE_PLAYER, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIME} from '../actions/actionTypes';
+import {FETCH_GAME, VOTE_PLAYER, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIME, FETCHED_PLAYER} from '../actions/actionTypes';
 //import { IGameState } from '../store/types';
 import {IGame} from "onuw-server-api";
 
@@ -20,6 +20,16 @@ export function gameReducer(state: IGame, action: GameActionTypes): IGame {
     case FETCHED_GAME_TIME:
       console.log('Game time action')
       return {...state, timeLeft: action.time};
+    case FETCHED_PLAYER:
+      console.log('player action')
+      const updatedPlayer = action.player;
+      if (state.currentPlayer.id === updatedPlayer.id) {
+        return {...state, currentPlayer: updatedPlayer};    
+      } else {
+        const otherPlayers = state.otherPlayers.filter(x => x.id !== updatedPlayer.id).concat(updatedPlayer)
+        return {...state, otherPlayers};    
+      }
+      
     default:
       return state;
   }

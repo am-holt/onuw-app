@@ -1,10 +1,12 @@
 import { IGameState } from "../store/types";
-import { IGame } from "onuw-server-api";
+import { IGame, IPlayer } from "onuw-server-api";
 
 export const FETCH_GAME = "FETCH_GAME"
 export const FETCHED_GAME = "UPDATE_GAME_STATE"
 export const VOTE_PLAYER = "VOTE_PLAYER"
 export const FETCHED_GAME_TIME = "FETCHED_GAME_TIME"
+export const FETCHED_PLAYER = "FETCHED_PLAYER"
+
 
 interface FetchGameAction {
     type: typeof FETCH_GAME;
@@ -26,7 +28,12 @@ interface FetchedGameTime {
     time: number;
 }
 
-export type GameActionTypes = VotePlayerAction | FetchGameAction | FetchedGameAction | FetchedGameTime;
+interface FetchedPlayer {
+    type: typeof FETCHED_PLAYER;
+    player: IPlayer;
+}
+
+export type GameActionTypes = VotePlayerAction | FetchGameAction | FetchedGameAction | FetchedGameTime | FetchedPlayer;
 
 export function getGame(gameId : string) : FetchGameAction {
     return {type: FETCH_GAME, gameId: gameId};
@@ -42,4 +49,8 @@ export function votePlayer(playerId : string) {
 
 export function receivedGameTime(gameTime: number) {
     return {type: FETCHED_GAME_TIME, time: gameTime};
+}
+
+export function receivedPlayer(player: IPlayer) {
+    return {type: FETCHED_PLAYER, player: player};
 }
