@@ -19,6 +19,5 @@ export const initialGame: IGame = {
         availableRoles: [],
         currentPhase: Phase.LOBBY,
         timeLeft: 0,
-        currentVote: "",
         gameId : "12",
     }

@@ -5,7 +5,7 @@ import { IGameState } from '../../store/types';
 import { RootState } from '../../reducers/rootReducer';
 
 export interface IVoteSelectorProps {
-    currentVote : string | undefined;
+    currentVote : string | null | undefined;
 }
 
 class VoteSelector extends Component<IVoteSelectorProps> {
@@ -24,12 +24,8 @@ class VoteSelector extends Component<IVoteSelectorProps> {
 }
 
 const mapStateToProps = (state: RootState) : IVoteSelectorProps => {
-    console.log('test')
-    console.log(state)
-    console.log(state.game.currentVote);
-    
     return {
-        currentVote: state.game.currentVote,
+        currentVote: state.game.currentPlayer.votingFor
     };
 }
 

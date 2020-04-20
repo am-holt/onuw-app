@@ -18,11 +18,6 @@ interface FetchedGameAction {
     game: IGame;
 }
 
-interface VotePlayerAction {
-    type: typeof VOTE_PLAYER;
-    playerId: string;
-}
-
 interface FetchedGameTime {
     type: typeof FETCHED_GAME_TIME;
     time: number;
@@ -38,8 +33,7 @@ interface SelectPlayer {
     playerId: String;
 }
 
-export type GameActionTypes = VotePlayerAction
-    | FetchGameAction  
+export type GameActionTypes = FetchGameAction  
     | FetchedGameAction 
     | FetchedGameTime 
     | FetchedPlayer 
@@ -51,10 +45,6 @@ export function getGame(gameId : string) : FetchGameAction {
 
 export function receivedGameState(gameState : IGame) : FetchedGameAction {
     return {type: FETCHED_GAME, game: gameState};
-}
-
-export function votePlayer(playerId : string) {
-    return {type: VOTE_PLAYER, playerId: playerId};
 }
 
 export function receivedGameTime(gameTime: number) {

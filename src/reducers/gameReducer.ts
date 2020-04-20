@@ -14,9 +14,6 @@ export function gameReducer(state: IGame, action: GameActionTypes): IGame {
     case FETCHED_GAME:
       console.log('FETCHED_GAME Action')
       return action.game;
-    case VOTE_PLAYER:
-      console.log('VOTE_PLAYER Action')
-      return {...state, currentVote: action.playerId};
     case FETCHED_GAME_TIME:
       console.log('Game time action')
       return {...state, timeLeft: action.time};
