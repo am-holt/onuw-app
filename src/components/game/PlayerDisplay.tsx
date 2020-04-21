@@ -19,16 +19,22 @@ export default class PlayerDisplay extends Component<IPlayerDisplayProps> {
   render(){
     return (
         <div className="playerDisplay">
-          <p>{this.props.player.name}</p>
-          {(this.props.phase === Phase.END || (this.props.phase === Phase.VOTE && this.props.player.votingFor))&& this.getVoteString()}
+          <div className="playerName">
+            {this.props.player.name}
+          </div>
+          {(this.props.phase === Phase.END || (this.props.phase === Phase.VOTE && this.props.player.votingFor))&& this.renderVote()}
           <RoleCard role={this.props.player.role} onClick={this.props.onClick}/>
         </div>
     )
   }
 
-  getVoteString() {
+  renderVote() {
     const voteeId = this.props.player.votingFor;
     const votee = (voteeId? this.props.playerDisplayNames.get(voteeId) :"None!")
-    return (this.props.phase === Phase.END ? "Voted" : "Voting") + ": " + votee;
+    return (
+      <div className="playerVote">
+        {(this.props.phase === Phase.END ? "Voted" : "Voting") + ": " + votee}
+      </div>
+    )
   }
 }

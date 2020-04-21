@@ -39,7 +39,9 @@ class Lobby extends Component<ILobbyProps> {
 
   renderPlayer(player: IPlayer) {
     return(
+      <div className="lobbyEntry">
         <input value={player.name} disabled={true} />
+      </div>
     )
   }
 
