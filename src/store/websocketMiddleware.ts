@@ -73,11 +73,13 @@ const socketMiddleware = () => {
           const editName = IClientEvent.updateName(action.name);
           socket.send(JSON.stringify(editName));
         }
+        break;
       case SELECT_PLAYER :
         if (socket !== null) {
           const select = IClientEvent.clickPlayer(action.playerId);
           socket.send(JSON.stringify(select));
         }
+        break;
       default:
         console.log('the next action:', action);
         return next(action);
