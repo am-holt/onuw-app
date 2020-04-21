@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.lobbyOtherPlayers {
+  margin: 1em;
+}
+
 .gamePage {
   width: 100%;
   height: 100%;
