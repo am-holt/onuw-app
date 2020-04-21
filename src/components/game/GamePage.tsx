@@ -61,7 +61,7 @@ class GamePage extends Component<IGamePageProps> {
                 <h1>
                 Phase: {this.props.gameState.currentPhase}
                 </h1>
-                Time left: {this.props.gameState.timeLeft}
+                Time: {this.props.gameState.timeLeft}
             </div>
         </div>
       )
