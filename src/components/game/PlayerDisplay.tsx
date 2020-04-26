@@ -1,7 +1,5 @@
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { RootState } from '../../reducers/rootReducer';
 import RoleCard from './RoleCard';
 import { IPlayer, Phase } from 'onuw-server-api';
 

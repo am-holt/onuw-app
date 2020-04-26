@@ -4,7 +4,7 @@ import {FETCH_GAME, VOTE_PLAYER, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIM
 import {IGame} from "onuw-server-api";
 
 export function gameReducer(state: IGame, action: GameActionTypes): IGame {
-  if(state === undefined) {
+  if (state === undefined) {
       return initialGame;
   }
   switch (action.type) {

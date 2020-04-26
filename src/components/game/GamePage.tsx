@@ -11,8 +11,13 @@ import { wsConnect, startGame } from '../../actions/websocketActions';
 import { IGame, Phase, IPlayer } from 'onuw-server-api';
 import Lobby from './Lobby';
 
+interface IOtherProps {
+    gameId: string;
+}
+
 interface IGamePageProps {
     gameState: IGame;
+    gameId: string;
     wsConnect: (host: any) => void;
     startGame: () => void;
     selectPlayer: (player:IPlayer) => void;
@@ -30,7 +35,7 @@ class GamePage extends Component<IGamePageProps> {
     }
     
     connectAndJoin = () => {
-        const host = `ws://127.0.0.1:8080/onuw/${this.props.gameState.gameId}`;
+        const host = `ws://127.0.0.1:8080/onuw/game/${this.props.gameId}`;
         console.log("connect")
         this.props.wsConnect(host);
     }
@@ -58,13 +63,33 @@ class GamePage extends Component<IGamePageProps> {
                 <PlayerDisplay player={this.props.gameState.currentPlayer} playerDisplayNames={this.getPlayerDisplayNames()} onClick={() => this.props.selectPlayer(this.props.gameState.currentPlayer)} phase={this.props.gameState.currentPhase}/>
             </div>
             <div className="status">
-                <h1>
-                Phase: {this.props.gameState.currentPhase}
-                </h1>
-                Time: {this.props.gameState.timeLeft}
+                {this.maybeShowWinner()}
+                {this.maybeRenderPhaseInfo()}
             </div>
         </div>
       )
+  }
+
+  maybeShowWinner() {
+      if (this.props.gameState.winningTeam) {
+        return (<h1>Winning Team: {this.props.gameState.winningTeam}</h1>)
+      } else {
+        return;
+      }
+  }
+
+  maybeRenderPhaseInfo() {
+    if (!this.props.gameState.winningTeam) {
+        return (
+            <div>
+              <h1>
+                Phase: {this.props.gameState.currentPhase}
+              </h1>
+              Time: {this.props.gameState.timeLeft}
+            </div>)
+    } else {
+        return;
+    }
   }
   
   getPlayerDisplayNames() {
@@ -75,8 +100,9 @@ class GamePage extends Component<IGamePageProps> {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
-    return {gameState: state.game};
+const mapStateToProps = (state: RootState, otherProps: IOtherProps) => {
+    console.log(otherProps)
+    return {gameState: state.game, gameId:otherProps.gameId};
 }
 
 const mapDispatchToProps = {

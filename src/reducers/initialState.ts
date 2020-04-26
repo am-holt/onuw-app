@@ -1,5 +1,4 @@
-import { IGameState } from "../store/types";
-import {IGame, Role, Phase} from "onuw-server-api";
+import {IGame, RoleType, Phase, Team} from "onuw-server-api";
 
 // export const initialGame: IGameState = {
 //     otherPlayers: [{name: "Bob", id: "2", lastKnownRole: "Unknown"}, {name: "Alice", id: "3", lastKnownRole: "Unknown"},{name: "John", id: "4", lastKnownRole: "Unknown"}],
@@ -14,7 +13,7 @@ import {IGame, Role, Phase} from "onuw-server-api";
 
 export const initialGame: IGame = {
         otherPlayers: [],
-        currentPlayer: {name: "0", id: "0", role: Role.HIDDEN},
+        currentPlayer: {name: "0", id: "0", role: RoleType.HIDDEN, team:Team.HIDDEN},
         neutralCards: [],
         availableRoles: [],
         currentPhase: Phase.LOBBY,

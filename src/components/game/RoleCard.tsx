@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../reducers/rootReducer';
-import { Role } from 'onuw-server-api';
+import { RoleType } from 'onuw-server-api';
 
 export interface IRoleCardProps {
-    role: Role;
+    role: RoleType;
     onClick: () => void;
 }
 
@@ -22,7 +22,7 @@ export default class RoleCard extends Component<IRoleCardProps> {
   }
   
   renderRole() {
-    if (this.props.role !== Role.HIDDEN) {
+    if (this.props.role !== RoleType.HIDDEN) {
       return( <p>{this.props.role}</p>)   
     } else {
       return( <p>?</p>)   
