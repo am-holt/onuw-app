@@ -15,7 +15,7 @@ function App(){
 
   return (
     <div className="App">
-      <Router>
+      <Router basename={'/onuw-server'}>
         <Switch>
           {/* Move below into own component then can useHistory */}
           <Route exact path="/" component={GameMenu} />

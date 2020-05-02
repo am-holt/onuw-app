@@ -2,6 +2,7 @@
 import React, { Component, Dispatch } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory, withRouter, Redirect } from 'react-router-dom';
+import './GameMenu.css'
 
 interface IState {
     gameId: undefined | string
@@ -14,14 +15,15 @@ class GameMenu extends Component {
   render(){
     return (
         <div className="gameMenu">
-            <button onClick={this.startNewGame}>Start new game</button>
+            <h1>One Night Ultimate Werewolf</h1>
+            <button onClick={this.startNewGame} className="newGameBtn">Start new game</button>
             {this.state.gameId !== undefined && <Redirect to={"/game/".concat((this.state.gameId as unknown) as string)} />}
         </div>
     )
   }
 
   startNewGame = () => {
-    fetch('http://localhost:8080/onuw/new', {
+    fetch('http://104.197.233.50:8080/onuw-server/api/onuw/new', {
       method: 'POST'
     }).then(response => response.json())
     .then(data => {

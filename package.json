@@ -1,5 +1,6 @@
 {
   "name": "onuw-app",
+  "homepage": "http://104.197.233.50:8080/onuw-server/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
