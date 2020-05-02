@@ -23,7 +23,7 @@ class GameMenu extends Component {
   }
 
   startNewGame = () => {
-    fetch('http://104.197.233.50:8080/onuw-server/api/onuw/new', {
+    fetch('http://' + process.env.REACT_APP_API_URL + '/api/onuw/new', {
       method: 'POST'
     }).then(response => response.json())
     .then(data => {

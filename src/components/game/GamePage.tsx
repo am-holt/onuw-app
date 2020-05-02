@@ -35,7 +35,7 @@ class GamePage extends Component<IGamePageProps> {
     }
     
     connectAndJoin = () => {
-        const host = `ws://104.197.233.50:8080/onuw-server/onuw/game/${this.props.gameId}`;
+        const host = `ws://` + process.env.REACT_APP_API_URL + `/onuw/game/${this.props.gameId}`;
         console.log("connect")
         this.props.wsConnect(host);
     }
