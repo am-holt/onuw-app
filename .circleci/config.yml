@@ -16,9 +16,15 @@ jobs:
       name: node/default
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:hkuJKFIgygmcIERdItQL90/H2Bc2rmGe1PeaUpH7cvU"
       - node/with-cache:
           steps:
             - run: echo "TODO"
+            - run: ls 
+            - run: ssh amholt05@104.197.233.50
+            - run: scp -r amholt05@104.197.233.50 build
 workflows:
     build-and-deploy:
       jobs:
@@ -32,5 +38,5 @@ workflows:
             filters:
               tags:
                 only: /^v.*/
-              branches:
-                ignore: /.*/
+              # branches:
+              #   ignore: /.*/
