@@ -1,5 +1,5 @@
 import { IGameState } from "../store/types";
-import { IGame, IPlayer } from "onuw-server-api";
+import { IGame, IPlayer } from "@am-holt/onuw-server-api";
 
 export const FETCH_GAME = "FETCH_GAME"
 export const FETCHED_GAME = "UPDATE_GAME_STATE"

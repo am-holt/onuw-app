@@ -8,7 +8,7 @@ import VoteSelector from './VoteSelector';
 import './GamePage.css'
 import RoleCard from './RoleCard';
 import { wsConnect, startGame } from '../../actions/websocketActions';
-import { IGame, Phase, IPlayer } from 'onuw-server-api';
+import { IGame, Phase, IPlayer } from '@am-holt/onuw-server-api';
 import Lobby from './Lobby';
 
 interface IOtherProps {
