@@ -24,6 +24,7 @@ jobs:
           steps:
             - run: npm run build
             - run: cd build
+            - run: ls
             - run: scp -r * amholt05@104.197.233.50:/opt/tomcat/webapps/onuw-server
 workflows:
     build-and-deploy:
