@@ -24,7 +24,7 @@ jobs:
           steps:
             - run: echo "TODO"
             - run: ls 
-            - run: ssh amholt05@104.197.233.50
+            - run: npm run build
             - run: scp -r amholt05@104.197.233.50 build
 workflows:
     build-and-deploy:
