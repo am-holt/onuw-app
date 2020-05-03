@@ -25,7 +25,7 @@ jobs:
             - run: echo "TODO"
             - run: ls 
             - run: npm run build
-            - run: scp -r amholt05@104.197.233.50 build
+            - run: scp -r amholt05@104.197.233.50:~/build build
 workflows:
     build-and-deploy:
       jobs:
