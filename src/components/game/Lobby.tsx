@@ -1,14 +1,10 @@
 
-import React, { Component, Dispatch } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { IGameState } from '../../store/types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { RootState } from '../../reducers/rootReducer';
-import PlayerDisplay from './PlayerDisplay';
-import VoteSelector from './VoteSelector';
 import './GamePage.css'
-import RoleCard from './RoleCard';
 import { editName, startGame } from '../../actions/websocketActions';
-import { IGame, Phase, IPlayer } from '@am-holt/onuw-server-api';
+import { IPlayer } from '@am-holt/onuw-server-api';
 
 interface ILobbyProps {
     otherPlayers: IPlayer[];
@@ -18,9 +14,6 @@ interface ILobbyProps {
 }
 
 class Lobby extends Component<ILobbyProps> {
-    constructor(props: ILobbyProps) {
-        super(props);
-    }
 
   render(){
     const anyOtherPlayers = this.props.otherPlayers.length === 0;

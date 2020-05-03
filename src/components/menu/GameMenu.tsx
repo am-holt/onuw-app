@@ -1,12 +1,7 @@
 
-import React, { Component, Dispatch } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useHistory, withRouter, Redirect } from 'react-router-dom';
-import './GameMenu.css'
-
-interface IState {
-    gameId: undefined | string
-}
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import './GameMenu.css';
 
 class GameMenu extends Component {
 
