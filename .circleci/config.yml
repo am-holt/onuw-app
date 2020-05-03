@@ -22,10 +22,9 @@ jobs:
             - "SHA256:hkuJKFIgygmcIERdItQL90/H2Bc2rmGe1PeaUpH7cvU"
       - node/with-cache:
           steps:
-            - run: echo "TODO"
-            - run: ls 
             - run: npm run build
-            - run: scp -r build amholt05@104.197.233.50:~/build
+            - run: cd build
+            - run: scp -r * amholt05@104.197.233.50:/opt/tomcat/webapps/onuw-server
 workflows:
     build-and-deploy:
       jobs:
