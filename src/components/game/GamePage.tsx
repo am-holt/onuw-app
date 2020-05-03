@@ -1,10 +1,9 @@
 
-import React, { Component, Dispatch } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { selectPlayer} from '../../actions/actionTypes'
 import { RootState } from '../../reducers/rootReducer';
 import PlayerDisplay from './PlayerDisplay';
-import VoteSelector from './VoteSelector';
 import './GamePage.css'
 import RoleCard from './RoleCard';
 import { wsConnect, startGame } from '../../actions/websocketActions';
@@ -24,9 +23,6 @@ interface IGamePageProps {
 }
 
 class GamePage extends Component<IGamePageProps> {
-    constructor(props: IGamePageProps) {
-        super(props);
-    }
     
     componentDidMount = () => {
         if (this.props.gameState.gameId) {
@@ -54,10 +50,10 @@ class GamePage extends Component<IGamePageProps> {
       return(
         <div className="cardView">
             <div className="otherPlayers">
-                {this.props.gameState.otherPlayers.sort((a,b)=> a.id > b.id ? 1 : (a.id ==b.id?0 :-1)).map(element => <PlayerDisplay player={element} playerDisplayNames={this.getPlayerDisplayNames()} onClick={() => this.props.selectPlayer(element)} phase={this.props.gameState.currentPhase}/>)}
+                {this.props.gameState.otherPlayers.sort((a,b)=> a.id > b.id ? 1 : (a.id === b.id?0 :-1)).map(element => <PlayerDisplay player={element} playerDisplayNames={this.getPlayerDisplayNames()} onClick={() => this.props.selectPlayer(element)} phase={this.props.gameState.currentPhase}/>)}
             </div>
             <div className="neutralCards">
-                {this.props.gameState.neutralCards.sort((a,b)=> a.id > b.id ? 1 : (a.id ==b.id?0 :-1)).map(element => <RoleCard role={element.role} onClick={()=> this.props.selectPlayer(element)}/>)}
+                {this.props.gameState.neutralCards.sort((a,b)=> a.id > b.id ? 1 : (a.id === b.id?0 :-1)).map(element => <RoleCard role={element.role} onClick={()=> this.props.selectPlayer(element)}/>)}
             </div>
             <div className="currentPlayer">
                 <PlayerDisplay player={this.props.gameState.currentPlayer} playerDisplayNames={this.getPlayerDisplayNames()} onClick={() => this.props.selectPlayer(this.props.gameState.currentPlayer)} phase={this.props.gameState.currentPhase}/>

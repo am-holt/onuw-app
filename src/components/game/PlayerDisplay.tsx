@@ -11,9 +11,7 @@ export interface IPlayerDisplayProps {
 }
 
 export default class PlayerDisplay extends Component<IPlayerDisplayProps> {
-  constructor(props : IPlayerDisplayProps){
-    super(props);
-  }
+
   render(){
     return (
         <div className="playerDisplay">

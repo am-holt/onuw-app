@@ -1,7 +1,5 @@
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { RootState } from '../../reducers/rootReducer';
 import { RoleType } from '@am-holt/onuw-server-api';
 
 export interface IRoleCardProps {
@@ -10,9 +8,7 @@ export interface IRoleCardProps {
 }
 
 export default class RoleCard extends Component<IRoleCardProps> {
-  constructor(props : IRoleCardProps){
-    super(props);
-  }
+
   render(){
     return (
         <div className="roleCard" onClick={this.props.onClick}>

@@ -5,10 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  RouteComponentProps,
-  useHistory
-} from "react-router-dom";
+  RouteComponentProps} from "react-router-dom";
 import GameMenu from './components/menu/GameMenu';
 
 function App(){

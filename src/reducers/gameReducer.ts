@@ -1,5 +1,5 @@
 import {initialGame} from './initialState';
-import {FETCH_GAME, VOTE_PLAYER, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIME, FETCHED_PLAYER} from '../actions/actionTypes';
+import {FETCH_GAME, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIME, FETCHED_PLAYER} from '../actions/actionTypes';
 //import { IGameState } from '../store/types';
 import {IGame} from "@am-holt/onuw-server-api";
 
@@ -29,7 +29,7 @@ export function gameReducer(state: IGame, action: GameActionTypes): IGame {
         const neutralCards = state.neutralCards.filter(x => x.id !== updatedPlayer.id).concat(updatedPlayer)
         return {...state, neutralCards};    
       }
-      
+      return state;
     default:
       return state;
   }
