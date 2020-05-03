@@ -10,7 +10,7 @@ class GameMenu extends Component {
   render(){
     return (
         <div className="gameMenu">
-            <h1>One Night Ultimate Werewolf</h1>
+            <h1>One Night Ultimate Werewolf!</h1>
             <button onClick={this.startNewGame} className="newGameBtn">Start new game</button>
             {this.state.gameId !== undefined && <Redirect to={"/game/".concat((this.state.gameId as unknown) as string)} />}
         </div>
