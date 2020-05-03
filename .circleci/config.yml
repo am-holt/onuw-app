@@ -16,6 +16,7 @@ jobs:
       name: node/default
     steps:
       - checkout
+      - run: ssh-keyscan 104.197.233.50 >> ~/.ssh/known_hosts
       - add_ssh_keys:
           fingerprints:
             - "SHA256:hkuJKFIgygmcIERdItQL90/H2Bc2rmGe1PeaUpH7cvU"
