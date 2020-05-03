@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../reducers/rootReducer';
-import { RoleType } from 'onuw-server-api';
+import { RoleType } from '@am-holt/onuw-server-api';
 
 export interface IRoleCardProps {
     role: RoleType;

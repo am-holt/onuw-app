@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import RoleCard from './RoleCard';
-import { IPlayer, Phase } from 'onuw-server-api';
+import { IPlayer, Phase } from '@am-holt/onuw-server-api';
 
 export interface IPlayerDisplayProps {
     player: IPlayer;

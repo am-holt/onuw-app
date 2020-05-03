@@ -1,7 +1,7 @@
 import {initialGame} from './initialState';
 import {FETCH_GAME, VOTE_PLAYER, GameActionTypes, FETCHED_GAME, FETCHED_GAME_TIME, FETCHED_PLAYER} from '../actions/actionTypes';
 //import { IGameState } from '../store/types';
-import {IGame} from "onuw-server-api";
+import {IGame} from "@am-holt/onuw-server-api";
 
 export function gameReducer(state: IGame, action: GameActionTypes): IGame {
   if (state === undefined) {

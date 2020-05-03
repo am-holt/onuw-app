@@ -1,4 +1,4 @@
-import {IGame, RoleType, Phase, Team} from "onuw-server-api";
+import {IGame, RoleType, Phase, Team} from "@am-holt/onuw-server-api";
 
 // export const initialGame: IGameState = {
 //     otherPlayers: [{name: "Bob", id: "2", lastKnownRole: "Unknown"}, {name: "Alice", id: "3", lastKnownRole: "Unknown"},{name: "John", id: "4", lastKnownRole: "Unknown"}],
