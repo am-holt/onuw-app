@@ -8,7 +8,7 @@ function App(){
 
   return (
     <div className="App">
-      <Router basename={'/onuw-server'}>
+      <Router basename={'/onuw'}>
         <Switch>
           {/* Move below into own component then can useHistory */}
           <Route exact path="/" component={GameMenu} />
