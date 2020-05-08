@@ -1,11 +1,7 @@
 import React from 'react';
-import GamePage from './components/game/GamePage';
+import { BrowserRouter as Router, Route, RouteComponentProps, Switch } from "react-router-dom";
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  RouteComponentProps} from "react-router-dom";
+import GamePage from './components/game/GamePage';
 import GameMenu from './components/menu/GameMenu';
 
 function App(){

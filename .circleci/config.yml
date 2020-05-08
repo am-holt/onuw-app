@@ -23,7 +23,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm run build
-            - run: scp -r ./build/* amholt05@104.197.233.50:/opt/tomcat/webapps/onuw-server
+            - run: scp -r ./build/* amholt05@104.197.233.50:/opt/tomcat/webapps/onuw
 workflows:
     build-and-deploy:
       jobs:
