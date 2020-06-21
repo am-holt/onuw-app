@@ -68,9 +68,13 @@ class GamePage extends Component<IGamePageProps> {
 
   maybeShowWinner() {
       if (this.props.gameState.winningTeam) {
-        return (<h1>Winning Team: {this.props.gameState.winningTeam}</h1>)
-      } else {
-        return;
+        const winner = this.props.gameState.currentPlayer.team === this.props.gameState.winningTeam
+        return (
+            <div>
+                <h1> You {winner ? "Win!" : "Lose!"}</h1>
+                <h3>Winning Team: {this.props.gameState.winningTeam}</h3>
+            </div>)
+        
       }
   }
 
