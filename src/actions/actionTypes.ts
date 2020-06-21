@@ -1,5 +1,4 @@
-import { IGame, IPlayer } from "@am-holt/onuw-server-api";
-import { IMessage } from "../../../onuw-server/onuw-server-api/onuw-server-api-typescript/src";
+import { IGame, IMessage, IPlayer } from "@am-holt/onuw-server-api";
 
 export const FETCH_GAME = "FETCH_GAME"
 export const FETCHED_GAME = "UPDATE_GAME_STATE"
