@@ -1,4 +1,4 @@
-import { IGame } from "@am-holt/onuw-server-api";
+import { IGame, MessageLevel } from "@am-holt/onuw-server-api";
 import { toast } from 'react-toastify';
 import { FETCHED_GAME, FETCHED_GAME_TIME, FETCHED_PLAYER, FETCH_GAME, GameActionTypes, RECEIVED_MESSAGE } from '../actions/actionTypes';
 import { initialGame } from './initialState';
@@ -18,9 +18,16 @@ export function gameReducer(state: IGame, action: GameActionTypes): IGame {
       console.log('Game time action')
       return {...state, timeLeft: action.time};
     case RECEIVED_MESSAGE:
-      console.log("Hello")
       console.log("Received message")
-      toast.info(action.message.message)
+      if (action.message.level === MessageLevel.INFO) {
+        toast.info(action.message.message)
+      } else if (action.message.level === MessageLevel.WARNING) {
+        toast.warn(action.message.message)
+      } else if (action.message.level === MessageLevel.ERROR) {
+        toast.error(action.message.message)
+      } else {
+        toast.info(action.message.message)
+      }
       return state;
     case FETCHED_PLAYER:
       console.log('player action')
