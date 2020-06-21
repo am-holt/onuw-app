@@ -1,8 +1,7 @@
 import { Dispatch, MiddlewareAPI } from 'redux';
-import { receivedGameState, receivedGameTime, receivedPlayer, SELECT_PLAYER } from '../actions/actionTypes';
+import { receivedGameState, receivedGameTime, receivedPlayer, SELECT_PLAYER, receivedMessage } from '../actions/actionTypes';
 import * as actions from '../actions/websocketActions';
-import {IServerEvent, IClientEvent, IPlayer, IGame, Void} from '@am-holt/onuw-server-api';
-
+import {IMessage, IServerEvent, IClientEvent, IPlayer, IGame, Void} from '@am-holt/onuw-server-api';
 
 const socketMiddleware = () => {
   let socket: WebSocket | null = null;
@@ -23,6 +22,7 @@ const socketMiddleware = () => {
       changePhase: () => console.log("TODOchangePhase"),
       updateTime: (obj: number) => store.dispatch(receivedGameTime(obj)),
       fullUpdate: (obj: IGame) => store.dispatch(receivedGameState(obj)),
+      sendMessage: (message: IMessage) => store.dispatch(receivedMessage(message)),
       unknown: () => console.log("TODOunknown"),
     }
   }
