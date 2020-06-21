@@ -1,4 +1,5 @@
 import { IGame, IPlayer } from "@am-holt/onuw-server-api";
+import { IMessage } from "../../../onuw-server/onuw-server-api/onuw-server-api-typescript/src";
 
 export const FETCH_GAME = "FETCH_GAME"
 export const FETCHED_GAME = "UPDATE_GAME_STATE"
@@ -6,6 +7,7 @@ export const VOTE_PLAYER = "VOTE_PLAYER"
 export const FETCHED_GAME_TIME = "FETCHED_GAME_TIME"
 export const FETCHED_PLAYER = "FETCHED_PLAYER"
 export const SELECT_PLAYER = "SELECT_PLAYER"
+export const RECEIVED_MESSAGE = "RECEIVED_MESSAGE"
 
 interface FetchGameAction {
     type: typeof FETCH_GAME;
@@ -27,6 +29,11 @@ interface FetchedPlayer {
     player: IPlayer;
 }
 
+interface ReceivedMessage {
+    type: typeof RECEIVED_MESSAGE;
+    message: IMessage;
+}
+
 interface SelectPlayer {
     type: typeof SELECT_PLAYER;
     playerId: String;
@@ -36,6 +43,7 @@ export type GameActionTypes = FetchGameAction
     | FetchedGameAction 
     | FetchedGameTime 
     | FetchedPlayer 
+    | ReceivedMessage
     | SelectPlayer;
 
 export function getGame(gameId : string) : FetchGameAction {
@@ -52,6 +60,10 @@ export function receivedGameTime(gameTime: number) {
 
 export function receivedPlayer(player: IPlayer) {
     return {type: FETCHED_PLAYER, player: player};
+}
+
+export function receivedMessage(message: IMessage) {
+    return {type: RECEIVED_MESSAGE, message: message}
 }
 
 export function selectPlayer(player: IPlayer) {
